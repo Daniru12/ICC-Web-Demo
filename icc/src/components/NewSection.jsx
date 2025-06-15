@@ -10,17 +10,17 @@ export const NewsSection = () => {
       category: 'Team News',
       time: '3 hours ago',
       image:
-        'https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+        'https://i.postimg.cc/g0HWvbk0/image.png',
     },
     {
       id: 2,
-      title: "ICC announces schedule for Women's T20 World Cup 2024",
+      title: "ICC announces schedule for Women's T20 World Cup 2025",
       excerpt:
         'The tournament will be hosted by Bangladesh with 10 teams competing for the trophy.',
       category: 'ICC',
       time: '6 hours ago',
       image:
-        'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+        'https://i.postimg.cc/mkRVCKkT/image.png',
     },
     {
       id: 3,
@@ -30,7 +30,7 @@ export const NewsSection = () => {
       category: 'Players',
       time: '12 hours ago',
       image:
-        'https://images.unsplash.com/photo-1571751239008-50cad6cb9265?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+        'https://i.postimg.cc/52GhLNV1/image.png',
     },
     {
       id: 4,
@@ -40,11 +40,11 @@ export const NewsSection = () => {
       category: 'Rankings',
       time: '1 day ago',
       image:
-        'https://images.unsplash.com/photo-1560272564-c83b66b1ad12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+        'https://i.postimg.cc/m2SC68Z6/image.png',
     },
   ]
   return (
-    <section className="mb-10">
+     <section className="mb-10 py-10 px-4 md:px-16">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold text-white">Latest News</h2>
         <a

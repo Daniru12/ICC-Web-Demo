@@ -1,7 +1,7 @@
 import React from 'react'
 export const HeroSection = () => {
   return (
-    <section className="mt-6 mb-10">
+    <section className="mt-0 mb-0">
       <div className="relative rounded-xl overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-[#061325] via-[#061325]/70 to-transparent z-10"></div>
         <img
@@ -15,11 +15,11 @@ export const HeroSection = () => {
               MATCH RESULT
             </span>
             <span className="ml-3 text-sm text-gray-300">
-              World Test Championship Final 2024
+              World Test Championship Final 2025
             </span>
           </div>
           <h2 className="text-3xl font-bold text-white mb-2">
-            South Africa crowned World Test Champions after historic win
+            South Africa crowned World Test Champions after Historic Win
           </h2>
           <p className="text-gray-200 mb-4 max-w-2xl">
             Dean Elgar's team secures South Africa's first-ever World Test

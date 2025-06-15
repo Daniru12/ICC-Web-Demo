@@ -4,32 +4,32 @@ export const Gallery = () => {
   const images = [
     {
       id: 1,
-      url: 'https://images.unsplash.com/photo-1580748141549-71748dbe0bdc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      url: 'https://i.postimg.cc/3JMWCpgf/image.png',
       title: 'England vs Australia - Ashes 2023',
     },
     {
       id: 2,
-      url: 'https://images.unsplash.com/photo-1531415074968-036ba1b575da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      url: 'https://i.postimg.cc/tJGZTVkc/image.png',
       title: 'India vs Pakistan - T20 World Cup',
     },
     {
       id: 3,
-      url: 'https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      title: 'New Zealand vs South Africa - ODI Series',
+      url: 'https://i.postimg.cc/9MwpqZht/image.png',
+      title: 'Sri Lanka vs England - Test Series',
     },
     {
       id: 4,
-      url: 'https://images.unsplash.com/photo-1584714268709-c3dd9c92b378?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      url: 'https://i.postimg.cc/m2pyVmgN/image.png',
       title: "Women's T20 World Cup Final",
     },
     {
       id: 5,
-      url: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      url: 'https://i.postimg.cc/cJzJb88z/image.png',
       title: 'ICC Champions Trophy',
     },
   ]
   return (
-    <section className="mb-10">
+    <section className="mb-10  py-10 px-4 md:px-16">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold text-white">Latest Photos</h2>
         <a
