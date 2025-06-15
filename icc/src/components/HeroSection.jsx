@@ -5,7 +5,7 @@ export const HeroSection = () => {
       <div className="relative rounded-xl overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-[#061325] via-[#061325]/70 to-transparent z-10"></div>
         <img
-          src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+          src="https://i.postimg.cc/mrLWBgQy/image.png"
           alt="South Africa celebrates World Test Championship victory"
           className="w-full h-96 object-cover"
         />

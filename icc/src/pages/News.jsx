@@ -23,15 +23,15 @@ export const News = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
+    <div className="min-h-screen w-full bg-gradient-to-br from-gray-900 via-slate-900 to-black">
 
-      <div className="max-w-1xl mx-auto px-10 py-10">
+      <div className="max-w-7xl mx-auto px-6 py-10">
         {/* Header Section */}
         <div className="grid lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 bg-gradient-to-r from-orange-400 to-pink-500 rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-300">
+          <div className="lg:col-span-2 bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-300">
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                src="https://i.postimg.cc/mrLWBgQy/image.png"
                 alt="Victory"
                 className="w-full h-96 object-cover"
               />
@@ -46,59 +46,86 @@ export const News = () => {
             </div>
           </div>
 
-          {/* Match Details */}
-          <div className="bg-gradient-to-br from-cyan-400 to-blue-500 p-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300">
-            <h2 className="text-xl font-bold text-white mb-4 drop-shadow-md">Match Details</h2>
-            <ul className="text-white space-y-3">
-              <li><strong>Venue:</strong> {matchDetails.venue}</li>
-              <li><strong>Date:</strong> {matchDetails.date}</li>
-              <li><strong>Result:</strong> <span className="text-yellow-300 font-bold">{matchDetails.result}</span></li>
-              <li><strong>Player of the Match:</strong> {matchDetails.motm}</li>
-              <li><strong>Duration:</strong> {matchDetails.duration}</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Scoreboard */}
-        <div className="mt-10 bg-gradient-to-r from-green-400 to-blue-500 p-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300">
-          <h2 className="text-xl font-bold text-white mb-6 drop-shadow-md">Final Scoreboard</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="flex items-center space-x-4 border-l-4 border-yellow-400 pl-4 bg-white bg-opacity-20 rounded-lg p-3">
-              <img src={flagUrls.sa} alt="SA Flag" className="w-10 h-7 rounded shadow-md" />
-              <div>
-                <div className="text-lg font-bold text-yellow-200">South Africa</div>
-                <div className="text-sm text-gray-100">Winner - 7 wickets</div>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4 border-l-4 border-orange-400 pl-4 bg-white bg-opacity-20 rounded-lg p-3">
-              <img src={flagUrls.aus} alt="AUS Flag" className="w-10 h-7 rounded shadow-md" />
-              <div>
-                <div className="text-lg font-bold text-orange-200">Australia</div>
-                <div className="text-sm text-gray-100">Runner-up</div>
-              </div>
+          {/* Match Details - Light Theme Box */}
+          <div className="bg-white rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300 border border-gray-200">
+            <div className="p-6">
+              <h2 className="text-xl font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">Match Details</h2>
+              <ul className="text-gray-700 space-y-3">
+                <li className="flex justify-between items-center">
+                  <span className="font-medium text-gray-600">Venue:</span>
+                  <span className="font-semibold text-gray-800">{matchDetails.venue}</span>
+                </li>
+                <li className="flex justify-between items-center">
+                  <span className="font-medium text-gray-600">Date:</span>
+                  <span className="font-semibold text-gray-800">{matchDetails.date}</span>
+                </li>
+                <li className="flex justify-between items-center">
+                  <span className="font-medium text-gray-600">Result:</span>
+                  <span className="font-bold text-green-600">{matchDetails.result}</span>
+                </li>
+                <li className="flex justify-between items-center">
+                  <span className="font-medium text-gray-600">Player of Match:</span>
+                  <span className="font-semibold text-gray-800">{matchDetails.motm}</span>
+                </li>
+                <li className="flex justify-between items-center">
+                  <span className="font-medium text-gray-600">Duration:</span>
+                  <span className="font-semibold text-gray-800">{matchDetails.duration}</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
 
-        {/* Stats Section */}
-        <div className="mt-10 bg-gradient-to-r from-purple-500 to-pink-500 p-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300">
-          <h2 className="text-xl font-bold text-white mb-6 drop-shadow-md">Quick Stats</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div className="bg-white bg-opacity-20 rounded-xl p-4 backdrop-blur-sm">
-              <div className="text-2xl font-bold text-yellow-300">1st</div>
-              <p className="text-gray-100 text-sm">WTC Title</p>
+        {/* Scoreboard - Light Theme Box */}
+        <div className="mt-10 bg-white rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300 border border-gray-200">
+          <div className="p-6">
+            <h2 className="text-xl font-bold text-gray-800 mb-6 border-b border-gray-200 pb-2">Final Scoreboard</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="flex items-center space-x-4 border-l-4 border-green-500 pl-4 bg-green-50 rounded-lg p-4">
+                <img src={flagUrls.sa} alt="SA Flag" className="w-12 h-8 rounded shadow-md" />
+                <div>
+                  <div className="text-lg font-bold text-green-700">South Africa</div>
+                  <div className="text-sm text-green-600 font-medium">Winner - 7 wickets</div>
+                </div>
+                <div className="ml-auto">
+                  <div className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">WINNER</div>
+                </div>
+              </div>
+              <div className="flex items-center space-x-4 border-l-4 border-orange-500 pl-4 bg-orange-50 rounded-lg p-4">
+                <img src={flagUrls.aus} alt="AUS Flag" className="w-12 h-8 rounded shadow-md" />
+                <div>
+                  <div className="text-lg font-bold text-orange-700">Australia</div>
+                  <div className="text-sm text-orange-600 font-medium">Runner-up</div>
+                </div>
+                <div className="ml-auto">
+                  <div className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold">2ND</div>
+                </div>
+              </div>
             </div>
-            <div className="bg-white bg-opacity-20 rounded-xl p-4 backdrop-blur-sm">
-              <div className="text-2xl font-bold text-yellow-300">4</div>
-              <p className="text-gray-100 text-sm">Days</p>
-            </div>
-            <div className="bg-white bg-opacity-20 rounded-xl p-4 backdrop-blur-sm">
-              <div className="text-2xl font-bold text-yellow-300">7</div>
-              <p className="text-gray-100 text-sm">Wickets</p>
-            </div>
-            <div className="bg-white bg-opacity-20 rounded-xl p-4 backdrop-blur-sm">
-              <div className="text-2xl font-bold text-yellow-300">95%</div>
-              <p className="text-gray-100 text-sm">Win Rate</p>
+          </div>
+        </div>
+
+        {/* Stats Section - Light Theme Box */}
+        <div className="mt-10 bg-white rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300 border border-gray-200">
+          <div className="p-6">
+            <h2 className="text-xl font-bold text-gray-800 mb-6 border-b border-gray-200 pb-2">Quick Stats</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-4 text-center transform hover:scale-105 transition-all duration-200">
+                <div className="text-3xl font-bold text-blue-600 mb-1">1st</div>
+                <p className="text-blue-700 text-sm font-medium">WTC Title</p>
+              </div>
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-4 text-center transform hover:scale-105 transition-all duration-200">
+                <div className="text-3xl font-bold text-purple-600 mb-1">4</div>
+                <p className="text-purple-700 text-sm font-medium">Days</p>
+              </div>
+              <div className="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-4 text-center transform hover:scale-105 transition-all duration-200">
+                <div className="text-3xl font-bold text-green-600 mb-1">7</div>
+                <p className="text-green-700 text-sm font-medium">Wickets</p>
+              </div>
+              <div className="bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 rounded-xl p-4 text-center transform hover:scale-105 transition-all duration-200">
+                <div className="text-3xl font-bold text-orange-600 mb-1">95%</div>
+                <p className="text-orange-700 text-sm font-medium">Win Rate</p>
+              </div>
             </div>
           </div>
         </div>

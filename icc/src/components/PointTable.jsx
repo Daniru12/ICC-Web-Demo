@@ -1,221 +1,151 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+
+// Map team names (lowercase) to flag codes
+const flagMap = {
+  india: 'in',
+  pakistan: 'pk',
+  australia: 'au',
+  england: 'gb',
+  'south africa': 'za',
+  'new zealand': 'nz',
+  'west indies': 'jm',
+  bangladesh: 'bd',
+  srilanka: 'lk',
+  afghanistan: 'af',
+  ireland: 'ie',
+  zimbabwe: 'zw',
+  netherlands: 'nl',
+  uae: 'ae',
+  nepal: 'np',
+  oman: 'om',
+  scotland: 'gb-sct',
+  namibia: 'na',
+  usa: 'us',
+};
+
+const getFlagUrl = (teamName) => {
+  const code = flagMap[teamName.toLowerCase()] || null;
+  return code
+    ? `https://flagcdn.com/w20/${code}.png`
+    : 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Gray_flag_icon.svg/640px-Gray_flag_icon.svg.png';
+};
+
 export function PointTable() {
-  
+  const [activeTab, setActiveTab] = useState('t20');
+  const [teams, setTeams] = useState([]);
+  const [loading, setLoading] = useState(false);
 
+  const RAPID_API_KEY = '37c29307f7msh430440e092d8dc4p1c2922jsn7ba698cd03b3';
+  const RAPID_API_HOST = 'unofficial-cricbuzz.p.rapidapi.com';
 
-  const [activeTab, setActiveTab] = useState('t20')
-  const t20Rankings = [
-    {
-      rank: 1,
-      team: 'India',
-      matches: 28,
-      points: 3802,
-      rating: 136,
-    },
-    {
-      rank: 2,
-      team: 'England',
-      matches: 33,
-      points: 4246,
-      rating: 129,
-    },
-    {
-      rank: 3,
-      team: 'Pakistan',
-      matches: 31,
-      points: 3946,
-      rating: 127,
-    },
-    {
-      rank: 4,
-      team: 'South Africa',
-      matches: 24,
-      points: 3026,
-      rating: 126,
-    },
-    {
-      rank: 5,
-      team: 'New Zealand',
-      matches: 26,
-      points: 3075,
-      rating: 118,
-    },
-    {
-      rank: 6,
-      team: 'Australia',
-      matches: 29,
-      points: 3409,
-      rating: 118,
-    },
-  ]
-  const odiRankings = [
-    {
-      rank: 1,
-      team: 'Australia',
-      matches: 30,
-      points: 3901,
-      rating: 130,
-    },
-    {
-      rank: 2,
-      team: 'India',
-      matches: 35,
-      points: 4289,
-      rating: 123,
-    },
-    {
-      rank: 3,
-      team: 'New Zealand',
-      matches: 27,
-      points: 3226,
-      rating: 119,
-    },
-    {
-      rank: 4,
-      team: 'England',
-      matches: 27,
-      points: 3121,
-      rating: 116,
-    },
-    {
-      rank: 5,
-      team: 'South Africa',
-      matches: 24,
-      points: 2756,
-      rating: 115,
-    },
-    {
-      rank: 6,
-      team: 'Pakistan',
-      matches: 25,
-      points: 2756,
-      rating: 110,
-    },
-  ]
-  const testRankings = [
-    {
-      rank: 1,
-      team: 'Australia',
-      matches: 19,
-      points: 2439,
-      rating: 128,
-    },
-    {
-      rank: 2,
-      team: 'India',
-      matches: 20,
-      points: 2526,
-      rating: 126,
-    },
-    {
-      rank: 3,
-      team: 'England',
-      matches: 25,
-      points: 2843,
-      rating: 114,
-    },
-    {
-      rank: 4,
-      team: 'New Zealand',
-      matches: 16,
-      points: 1792,
-      rating: 112,
-    },
-    {
-      rank: 5,
-      team: 'Pakistan',
-      matches: 14,
-      points: 1486,
-      rating: 106,
-    },
-    {
-      rank: 6,
-      team: 'South Africa',
-      matches: 15,
-      points: 1542,
-      rating: 103,
-    },
-  ]
-  const getActiveRankings = () => {
-    switch (activeTab) {
-      case 't20':
-        return t20Rankings
-      case 'odi':
-        return odiRankings
-      case 'test':
-        return testRankings
-      default:
-        return t20Rankings
-    }
-  }
+  useEffect(() => {
+    const fetchRankings = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(
+          `https://${RAPID_API_HOST}/stats/get-icc-rankings?category=team&formatType=${activeTab}&isWomen=0`,
+          {
+            method: 'GET',
+            headers: {
+              'X-RapidAPI-Key': RAPID_API_KEY,
+              'X-RapidAPI-Host': RAPID_API_HOST,
+            },
+          }
+        );
+        const { rank } = await res.json();
+        const parsed = rank.map(item => ({
+          rank: parseInt(item.rank),
+          team: item.name,
+          matches: parseInt(item.matches),
+          points: parseInt(item.points),
+          rating: parseInt(item.rating),
+        }));
+        setTeams(parsed);
+      } catch (err) {
+        console.error('Fetch failed:', err);
+        setTeams([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchRankings();
+  }, [activeTab]);
+
   return (
-    <section className="mb-10">
-      <h2 className="text-2xl font-bold text-white mb-6">ICC Rankings</h2>
+    <section className="mb-10 px-6 md:px-16">
+      <h2 className="text-2xl font-bold text-white mb-6">ICC Team Rankings</h2>
+
+      {/* Format Tabs */}
       <div className="mb-6 flex">
-        <button
-          className={`px-6 py-3 font-medium ${activeTab === 't20' ? 'bg-[#28B6CE] text-white' : 'bg-[#0E2340] text-gray-300 hover:bg-[#1A3356]'} 
-            rounded-tl-lg rounded-bl-lg transition-colors duration-200`}
-          onClick={() => setActiveTab('t20')}
-        >
-          T20
-        </button>
-        <button
-          className={`px-6 py-3 font-medium ${activeTab === 'odi' ? 'bg-[#28B6CE] text-white' : 'bg-[#0E2340] text-gray-300 hover:bg-[#1A3356]'} 
-            transition-colors duration-200`}
-          onClick={() => setActiveTab('odi')}
-        >
-          ODI
-        </button>
-        <button
-          className={`px-6 py-3 font-medium ${activeTab === 'test' ? 'bg-[#28B6CE] text-white' : 'bg-[#0E2340] text-gray-300 hover:bg-[#1A3356]'} 
-            rounded-tr-lg rounded-br-lg transition-colors duration-200`}
-          onClick={() => setActiveTab('test')}
-        >
-          TEST
-        </button>
+        {['t20', 'odi', 'test'].map(type => (
+          <button
+            key={type}
+            onClick={() => setActiveTab(type)}
+            className={`px-6 py-3 font-medium ${
+              activeTab === type
+                ? 'bg-[#28B6CE] text-white'
+                : 'bg-[#0E2340] text-gray-300 hover:bg-[#1A3356]'
+            } ${
+              type === 't20'
+                ? 'rounded-tl-lg rounded-bl-lg'
+                : type === 'test'
+                ? 'rounded-tr-lg rounded-br-lg'
+                : ''
+            } transition-colors duration-200`}
+          >
+            {type.toUpperCase()}
+          </button>
+        ))}
       </div>
-      <div className="bg-[#0E2340] rounded-lg overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="bg-[#061325]">
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-300">
-                  Rank
-                </th>
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-300">
-                  Team
-                </th>
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-300">
-                  Matches
-                </th>
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-300">
-                  Points
-                </th>
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-300">
-                  Rating
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {getActiveRankings().map((team) => (
-                <tr
-                  key={team.rank}
-                  className="border-b border-[#1A3356] hover:bg-[#1A3356] transition-colors duration-150"
-                >
-                  <td className="px-4 py-3 text-sm">{team.rank}</td>
-                  <td className="px-4 py-3 font-medium">{team.team}</td>
-                  <td className="px-4 py-3 text-sm">{team.matches}</td>
-                  <td className="px-4 py-3 text-sm">{team.points}</td>
-                  <td className="px-4 py-3 text-sm font-bold">{team.rating}</td>
+
+      {loading ? (
+        <div className="text-gray-300">Loading rankings...</div>
+      ) : (
+        <div className="bg-[#0E2340] rounded-lg overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="bg-[#061325]">
+                  {['Rank', 'Team', 'Matches', 'Points', 'Rating'].map(col => (
+                    <th
+                      key={col}
+                      className="px-4 py-3 text-left text-sm font-semibold text-gray-300"
+                    >
+                      {col}
+                    </th>
+                  ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {teams.map(team => (
+                  <tr
+                    key={team.rank}
+                    className="border-b border-[#1A3356] hover:bg-[#1A3356] transition"
+                  >
+                    <td className="px-4 py-3 text-sm">{team.rank}</td>
+                    <td className="px-4 py-3 inline-flex items-center">
+                      <img
+                        src={getFlagUrl(team.team)}
+                        alt={`${team.team} flag`}
+                        className="w-5 h-3 mr-2 object-cover border"
+                      />
+                      <span className="font-medium text-sm text-gray-200">
+                        {team.team}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3 text-sm">{team.matches}</td>
+                    <td className="px-4 py-3 text-sm">{team.points}</td>
+                    <td className="px-4 py-3 text-sm font-bold">{team.rating}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="p-4 text-xs text-gray-400 border-t border-[#1A3356]">
+            Last updated: {new Date().toLocaleDateString()}
+          </div>
         </div>
-        <div className="p-4 text-xs text-gray-400 border-t border-[#1A3356]">
-          Last updated: June 15, 2023
-        </div>
-      </div>
+      )}
     </section>
-  )
+  );
 }
