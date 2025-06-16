@@ -67,7 +67,7 @@ export const Photos = () => {
     },
     {
       id: 7,
-      src: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=600&h=300&fit=crop',
+      src: 'https://i.postimg.cc/Ls5z5ryb/image.png',
       title: 'Match Highlights',
       category: 'matches',
       description: 'Key moments from the final match',
@@ -76,7 +76,7 @@ export const Photos = () => {
     },
     {
       id: 8,
-      src: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=500&fit=crop',
+      src: 'https://i.postimg.cc/2Sc00dMg/image.png',
       title: 'Fan Support',
       category: 'fans',
       description: 'Incredible support from our loyal fans',

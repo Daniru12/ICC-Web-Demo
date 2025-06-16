@@ -13,20 +13,22 @@ export const HeroSection = () => {
       buttonText: "Match Report"
     },
     {
-      imageUrl: "https://i.postimg.cc/8zYVx3JQ/cricket2.jpg",
-      category: "LATEST NEWS",
-      tournament: "Ashes Series 2025",
-      title: "England fight back on day 3 of the 2nd Test",
-      description: "Stokes and Root partnership revives England's hopes after early wickets",
-      buttonText: "Full Story"
+      imageUrl: "https://i.postimg.cc/htRfdN2G/image.png",
+category: "LATEST NEWS",
+tournament: "Sri Lanka vs Bangladesh Series 2025",
+title: "Sri Lanka set to host Bangladesh across formats",
+description: "All eyes on Galle, Colombo, Kandy, and Dambulla as the two sides clash in Tests, ODIs and T20Is from June 17 to July 16.",
+buttonText: "Full Story"
+
     },
     {
-      imageUrl: "https://i.postimg.cc/9FJYx9WQ/cricket3.jpg",
-      category: "INTERVIEW",
-      tournament: "IPL 2025 Special",
-      title: "Kohli reflects on his journey after 100th IPL century",
-      description: "The batting maestro shares insights on his fitness regime and mental preparation",
-      buttonText: "Watch Now"
+      imageUrl: "https://i.postimg.cc/R07Hb4by/image.png", // Replace with your actual image URL
+category: "UPCOMING TOURNAMENT",
+tournament: "Women's T20 World Cup 2024",
+title: "10 Teams Set to Clash in Bangladesh",
+description: "The ICC Women's T20 World Cup kicks off soon in Bangladesh with top teams battling for the title.",
+buttonText: "View Schedule"
+
     }
   ];
 
